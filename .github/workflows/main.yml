@@ -16,7 +16,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: "3.11"  # Updated to the latest Python version
+
+      - name: Install PortAudio
+        run: |
+          brew install portaudio
 
       - name: Install dependencies
         run: |
@@ -26,7 +30,7 @@ jobs:
 
       - name: Build macOS App
         run: |
-          pyinstaller --onefile --windowed --icon=your_icon.icns transcriber.py
+          pyinstaller --onefile --windowed --icon=icon.icns transcriber.py
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
